@@ -79,8 +79,12 @@ contract Resume {
     }
 
     function FillItem(string ObjectHash) public returns(string){
+        for(uint i=0;i<itemFlow[ObjectHash].length;i++){
+            if(itemFlow[ObjectHash][i] == msg.sender)
+                return "AlreadyFilledException";
+        }
         bool flag = false;
-        for(uint i=0;i<Notice[msg.sender].length;i++){
+        for(i=0;i<Notice[msg.sender].length;i++){
             if(stringsEqual(Notice[msg.sender][i],ObjectHash))
                 flag = true;
         }
