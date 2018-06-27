@@ -41,6 +41,10 @@ contract Resume {
         bytes memory tmpOH = bytes(ObjectHash);
         if(tmpOH.length!=46)
             return "HashErrorException";
+        for(uint i=0;i<itemLog[msg.sender].itemList.length;i++){
+            if(stringsEqual(itemLog[msg.sender].itemList[i],ObjectHash))
+                return "DuplicateObjectHashException";
+        }
         itemLog[msg.sender].index ++;
         itemLog[msg.sender].itemList.length = itemLog[msg.sender].index;
         itemLog[msg.sender].itemList[itemLog[msg.sender].index-1] = ObjectHash;

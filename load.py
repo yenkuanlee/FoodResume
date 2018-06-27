@@ -32,11 +32,14 @@ if sys.argv[1] == "supplier":
             Tset.add(y)
     os.chdir("Resume")
     for x in Tset:
-        print("put item into contract : "+x)
-        os.system("python3 put_item.py "+x)
+        print("supplier put item into contract : "+x)
+        os.system("python3 test.py supplier PushItem "+x)
 elif sys.argv[1] == "gmeal":
     f = open('gmeal.json')
     line = f.readline()
     Jline = json.loads(line)
+    os.chdir("Resume")
     for x in Jline:
         print(x,Jline[x])
+        print("gmeal put item into contract : "+Jline[x])
+        os.system("python3 test.py gmeal PushItem "+Jline[x])

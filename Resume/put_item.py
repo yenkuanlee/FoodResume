@@ -7,7 +7,8 @@ import sys
 Cpath = os.path.dirname(os.path.realpath(__file__))
 
 host = 'localhost'
-account = '0x42946c2bb22ad422e7366d68d3ca07fb1862ff36'
+#account = '0x42946c2bb22ad422e7366d68d3ca07fb1862ff36' ## supplier
+account = '0xe6ab871f860d9f28764d5d2e0672396a7643710e'  ## gmeal
 passwd = '123'
 
 
