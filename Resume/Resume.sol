@@ -22,12 +22,14 @@ contract Resume {
         }
     }
 
-    function Record(string ObjectHash) public{
-        //if(itemLog[msg.sender].index!=0){
-            itemLog[msg.sender].index ++;
-            itemLog[msg.sender].itemList.length = itemLog[msg.sender].index;
-            itemLog[msg.sender].itemList[itemLog[msg.sender].index-1] = ObjectHash;
-        //}
+    function Record(string ObjectHash) public returns (string){
+        bytes memory tmpOH = bytes(ObjectHash);
+        if(tmpOH.length!=46)
+            return "HashErrorException";
+        itemLog[msg.sender].index ++;
+        itemLog[msg.sender].itemList.length = itemLog[msg.sender].index;
+        itemLog[msg.sender].itemList[itemLog[msg.sender].index-1] = ObjectHash;
+        return "SUCCESS";
     }
 
     function GetIndex(address a) public returns(uint256){
@@ -47,7 +49,8 @@ contract Resume {
             bytes memory Ntmp = bytes(GetObjectHash(a,indexx-1-i));
             for(uint j=0;j<Ntmp.length;j++)
                 Btmp[k++] = Ntmp[j];
-            Btmp[k++] = ";";
+            if(i!=indexx-1)
+                Btmp[k++] = ";";
         }
         return string(Btmp);
     }

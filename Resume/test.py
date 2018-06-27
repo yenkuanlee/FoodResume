@@ -29,4 +29,5 @@ contract_instance = w3.eth.contract(abi, contract_address, ContractFactoryClass=
 #contract_instance.Record(sys.argv[1],transact={'from': account})
 a = contract_instance.GetStringInfo("0x42946c2bb22ad422e7366d68d3ca07fb1862ff36")
 tmp = a.split(";")
-print(tmp)
+for x in tmp:
+    print(x)
