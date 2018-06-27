@@ -53,8 +53,11 @@ if sys.argv[2] == "GetStringInfo":
 elif sys.argv[2] == "SendNotice":
     ObjectHash = sys.argv[3]
     toSomeone = sys.argv[4]
-    a = contract_instance.SendNotice(ObjectHash,toSomeone,transact={'from': account})
-    print("TransactionID : "+a)
+    a = contract_instance.SendNotice(ObjectHash,toSomeone)
+    print(a)
+    if a == "SUCCESS":
+        a = contract_instance.SendNotice(ObjectHash,toSomeone,transact={'from': account})
+        print("TransactionID : "+a)
 elif sys.argv[2] == "GetNotice":
     a = contract_instance.GetNotice()
     tmp = a.split(";")
@@ -74,7 +77,7 @@ elif sys.argv[2] == "FillItem":
     print(a)
     if a=="SUCCESS":
         a = contract_instance.FillItem(ObjectHash,transact={'from': account})
-    print("TransactionID : "+a)
+        print("TransactionID : "+a)
 elif sys.argv[2] == "GetStringItemFlow":
     ObjectHash = sys.argv[3]
     a = contract_instance.GetStringItemFlow(ObjectHash)

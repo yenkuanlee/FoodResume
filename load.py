@@ -20,20 +20,16 @@ Edate = god.ObjectPeer("Edate")
 Company = god.ObjectPeer("Company")
 CID = god.ObjectPeer("CID")
 
-Tset = set()
-
 if sys.argv[1] == "supplier":
     f = open('supplier.json','r')
     line = f.readline()
     Jline = json.loads(line)
+    os.chdir("Resume")
     for x in Jline:
         for y in Jline[x]:
             print(x,GetIngredient(y),y)
-            Tset.add(y)
-    os.chdir("Resume")
-    for x in Tset:
-        print("supplier put item into contract : "+x)
-        os.system("python3 test.py supplier PushItem "+x)
+            print("supplier put item into contract : "+y)
+            os.system("python3 test.py supplier PushItem "+y)
 elif sys.argv[1] == "gmeal":
     f = open('gmeal.json')
     line = f.readline()
