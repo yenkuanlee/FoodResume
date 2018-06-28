@@ -22,8 +22,10 @@ with open('testt.csv', newline='') as csvfile:
             SupplierDict[row[10]] = list()
         Ingredient = ObjectNode.ObjectNode(row[4])
         if row[6] != "":
+            row[6] = row[6].replace("/","")
             Ingredient.AddHash(Sdate,row[6])
         if row[7] != "":
+            row[7] = row[7].replace("/","")
             Ingredient.AddHash(Edate,row[7])
         if row[10] != "":
             Ingredient.AddHash(Company,row[10])
